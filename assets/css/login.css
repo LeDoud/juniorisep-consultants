@@ -1,0 +1,46 @@
+/* 
+    Document   : login
+    Created on : 4 mars 2013, 16:30:01
+    Author     : Edouard
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+body {background-image: url("../img/Logo_Junior_ISEP.png");background-repeat:no-repeat;}
+h3{text-align:center;}
+
+#login {
+    margin: -100px 0 0 -200px;
+    /*background: transparent;*/
+    background-color:#f5f5f5;
+    min-height:20px;
+    padding:19px;
+    margin-bottom:20px;
+    border-radius: 20px;
+    width: 280px;
+    border:1px solid #e3e3e3;
+    /*margin: 0 auto;*/
+    position:absolute;
+    top:35%;
+    left:55%;
+
+
+
+}
+#login {
+    -webkit-transition: 2s ease-in-out all;
+    -moz-transition: 2s ease-in-out all;
+    -ms-transition: 2s ease-in-out all;
+    -o-transition: 2s ease-in-out all;
+    transition: 2s ease-in-out all;
+}
+#login:hover {
+    -moz-box-shadow: 0 0 100px #3d0c7d;
+    -webkit-box-shadow: 0 0 100px #3d0c7d;
+    box-shadow: 0 0 100px #3d0c7d;
+}

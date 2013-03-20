@@ -1,0 +1,137 @@
+/**
+ * All your custom CSS should go into this file
+*/
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+body {background-image: url("cream_dust.png");}
+
+
+/* =============================================================================
+   Header
+   ========================================================================== */
+
+#banner {
+    font-size: 13px;
+    background-image: url("square_bg_@2X.png");
+}
+
+@media (min-width: 1200px) {
+    #banner .nav,
+    #banner .nav > li {
+        float:none;
+        display:inline-block;
+        *display:inline;
+        *zoom:1;
+        vertical-align: top;
+    }
+}
+
+#banner .brand {
+    cursor: pointer;
+    padding-right: 0;
+    padding-left: 0;
+    font-weight: bold;
+    color: #444;
+    text-shadow: 0 2px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.225);
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    transition: all .2s linear;
+}
+
+#banner .brand:hover {
+    text-decoration: none;
+    color: #70549A;
+    text-shadow: 0 2px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
+}
+
+#banner .banner-inner {
+    text-align: center;
+}
+
+#banner .banner-inner h1 {
+    display: inline-block;
+    font-weight: lighter;
+    color: #bdbdbd;
+}
+
+#banner .banner-inner img {
+    vertical-align: -42px;
+    display: inline-block;
+}
+
+#banner .btn {
+    font-size: 2em;
+}
+
+
+/* Fixed Topbar Navigation */
+body.top-navbar { padding-top: 60px; }
+body.admin-bar .navbar-fixed-top { top: 28px; }
+
+
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+body > footer {
+    border-top: 1px solid #c0c0c0;
+}
+
+#content-info {
+    color: #999;
+    background-image: url("gray_jean.png");
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+#content-info .row-fluid {
+    margin-top: 85px;
+    margin-bottom: 85px;
+}
+
+#content-bas .row-fluid {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media (max-width: 979px) {
+    /* Fix top padding when using the responsive grid with the fixed topbar */
+    body.top-navbar {
+        padding-top: 0;
+    }
+}
+
+
+/* ==========================================================================
+   Modal Boostrap (Responsive)
+   ========================================================================== */
+
+
+@media (max-width: 800px)
+{
+    .modal {
+        position: fixed;
+        top: 3%;
+        right: 3%;
+        left: 3%;
+        bottom: 3%;
+        width: auto;
+        margin: 0;
+    }
+    .modal-body {
+        max-height: 350px;
+        padding: 15px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
