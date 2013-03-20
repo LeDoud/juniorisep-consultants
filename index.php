@@ -1,7 +1,7 @@
 <?php
 /*
  *---------------------------------------------------------------
- * Application Web : Espace consultant (2013) par Edouard VAN YEN
+ * Application Web : Espace consultant (2013) par Edouard VY
  *---------------------------------------------------------------
  *
  * Cette application a été réalisée grâce à la combinaison
