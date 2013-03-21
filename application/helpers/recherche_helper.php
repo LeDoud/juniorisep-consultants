@@ -64,7 +64,7 @@ function getListConsultants($id_recherche) {
     if ($title == '') {
         $string = '<a data-placement="top" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');" href="" data-html="TRUE" title="Personne pour le moment !"><i class="icon icon-user"></i></a>';
     } else {
-        $string = '<a data-placement="top" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');" href="" data-html="TRUE" title="' . $title . '"><i class="icon icon-user"></i></a>';
+        $string = '<a data-placement="top" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip({title:\''.str_replace('"','’',str_replace("'","’",$title)).'\'});$(this).tooltip(\'show\');" href="" data-html="TRUE"><i class="icon icon-user"></i></a>';
     }
     return $string;
 }

@@ -57,7 +57,7 @@ class Recherche extends CI_Controller {
         $this->form_validation->set_message('min_length', 'Le champ %s doit être plus long !');
 
         $this->form_validation->set_rules('recherche-post', 'Recherche', 'trim|required|min_length[1]');
-        $this->form_validation->set_rules('motivation', 'Motivation', 'trim|required|min_length[50]|max_length[500]');
+        $this->form_validation->set_rules('motivation', 'Motivation', 'trim|required|min_length[50]|max_length[1000]');
         $this->form_validation->set_error_delimiters('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button>', '</div>');
 
         if ($this->form_validation->run() == FALSE || (checkConsultant($this->input->post('recherche-post'), $userdata['id']) == TRUE)) {

@@ -67,7 +67,7 @@ class Admin_formations extends CI_Controller {
         $this->form_validation->set_rules('lieu', 'Lieu de la formation', 'trim|required|min_length[3]|max_length[20]|htmlspecialchars');
         $this->form_validation->set_rules('date', 'Date de la formation', 'trim|required|htmlspecialchars');
         $this->form_validation->set_rules('intervenants', 'Intervenants de la formation', 'trim|required|min_length[3]|max_length[30]');
-        $this->form_validation->set_rules('details-formation', 'Détails de la formation', 'trim|required|min_length[10]|max_length[250]');
+        $this->form_validation->set_rules('details-formation', 'Détails de la formation', 'trim|required|min_length[10]|max_length[1000]');
 //+email  pour dire de faire de la pub
         if ($this->form_validation->run() == FALSE || (!$this->upload->do_upload('fichiers') && !empty($_FILES['fichiers']['name']))) {
             $data['error'] = $this->upload->display_errors('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button>', '</div>');

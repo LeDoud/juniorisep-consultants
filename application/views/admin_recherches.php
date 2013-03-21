@@ -21,7 +21,7 @@
                     } else {
                         $select = form_open('admin_recherches/change', array('class' => 'form-horizontal')) . '<select id="dispo" name="dispo" class="input-small" onchange="this.form.submit();"><option value="oui" >oui</option><option value="non" selected>non</option>></select><input type="hidden" name="thisrecherche" id="thisrecherche" value="' . $info[$i]['id_recherche'] . '"></form>';
                     }
-                    echo'<tr><td>' . $info[$i]['priorite'] . '</td><td>' . $info[$i]['type'] . '</td><td>' . $info[$i]['competences'] . '</td><td>' . notation($info[$i]['difficulte']) . '</td><td style="text-align:center;">' . ($info[$i]['nbr_intervenants']) . '</td><td style="text-align:center;">' . respo($info[$i]['id_cdp']) . '</td><td style="text-align:center;">' . formatDate($info[$i]['date']) . '</td><td style="text-align:center;">' . getListConsultants($info[$i]['id_recherche']) . '</td><td style="text-align:center;">' . documents($info[$i]['fichiers']) . '</td><td>' . $select . '</td><td style="text-align:center;"><a data-placement="top" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');document.getElementById(\'recherche-delete\').value=' . $info[$i]['id_recherche'] . '" href="#delete-recherche" data-toggle="modal" data-original-title="Supprimer"><i class="icon icon-trash"></i></a></td><td style="text-align:center;"><a onmouseout="$(this).popover(\'hide\');" onmouseover="$(this).popover(\'show\');" href="" data-toggle="popover" data-placement="bottom" data-content="' . $info[$i]['details_recherche'] . '" data-html="TRUE" data-original-title="Détails de la mission <strong>' . $info[$i]['nom_mission'] . '</strong>"><i class="icon icon-search"></i></a></td></tr>';
+                    echo'<tr><td>' . $info[$i]['priorite'] . '</td><td>' . $info[$i]['type'] . '</td><td>' . $info[$i]['competences'] . '</td><td>' . notation($info[$i]['difficulte']) . '</td><td style="text-align:center;">' . ($info[$i]['nbr_intervenants']) . '</td><td style="text-align:center;">' . respo($info[$i]['id_cdp']) . '</td><td style="text-align:center;">' . formatDate($info[$i]['date']) . '</td><td style="text-align:center;">' . getListConsultants($info[$i]['id_recherche']) . '</td><td style="text-align:center;">' . documents($info[$i]['fichiers']) . '</td><td>' . $select . '</td><td style="text-align:center;"><a data-placement="top" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');document.getElementById(\'recherche-delete\').value=' . $info[$i]['id_recherche'] . '" href="#delete-recherche" data-toggle="modal" data-original-title="Supprimer"><i class="icon icon-trash"></i></a></td><td style="text-align:center;"><a onmouseout="$(this).popover(\'hide\');" onmouseover="$(this).popover({content:\'' . str_replace('"', '’', str_replace("'", "’", $info[$i]['details_recherche'])) . '\'});$(this).popover(\'show\');" href="" data-toggle="popover" data-placement="bottom"  data-html="TRUE" data-original-title="Détails de la mission <strong>' . $info[$i]['nom_mission'] . '</strong>"><i class="icon icon-search"></i></a></td></tr>';
                 }
                 ?>
             </tbody>
@@ -89,13 +89,13 @@
                 <div class="control-group">
                     <label class="control-label" for="details_recherche">Détails de la mission</label>
                     <div class="controls">
-                        <textarea name="details_recherche" id="details_recherche" rows="5" cols="3"><?php echo set_value('details_recherche', '...'); ?></textarea>
+                        <textarea name="details_recherche" id="details_recherche" rows="5" cols="3"><?php echo set_value('details_recherche', ''); ?></textarea>
                     </div>
                 </div>
 
 
                 <div class="control-group">
-                    <label class="control-label" for="fichiers">Document</label>
+                    <label class="control-label" for="fichiers">Document (pdf ou zip)</label>
                     <div class="controls">
                         <span class="btn btn-file"><input type="file" name="fichiers" id="fichiers"/></span>
                     </div>
@@ -133,3 +133,6 @@
 
 
 <?php echo (isset($modal) && $modal == TRUE) ? "<script>$('#add-recherche').modal('show');</script>" : "" ?>
+                <script src="<?php echo base_url('assets/js/wysihtml5-0.3.0.js') ?>"></script>
+                <script src="<?php echo base_url('assets/js/bootstrap-wysihtml5.js') ?>"></script>
+<script>$('#details_recherche').wysihtml5();</script>

@@ -16,7 +16,7 @@
             <tbody>
                 <?php
                 for ($i = 0; $i < $nbr_formations; $i++) {
-                    echo'<tr><td>' . $info[$i]['nom_formation'] . '</td><td>' . $info[$i]['lieu'] . '</td><td>' . formatDate($info[$i]['date']) . '</td><td>' . $info[$i]['intervenants'] . '</td><td style="text-align:center;">' . documents($info[$i]['fichiers']) . '</td><td style="text-align:center;">' . getListConsultants($info[$i]['id_formation']) . '</td><td style="text-align:center;"><a data-placement="top" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');document.getElementById(\'formation-delete\').value=' . $info[$i]['id_formation'] . '" href="#delete-formation" data-toggle="modal" data-original-title="Supprimer" ><i class="icon-trash"></i></a></td><td style="text-align:center;"><a onmouseout="$(this).popover(\'hide\');" onmouseover="$(this).popover(\'show\');" href="" data-toggle="popover" data-placement="right"  data-html="TRUE" data-content="' . $info[$i]['details_formation'] . '" data-original-title="Détails de la formation"><i class="icon icon-search"></i></a></td></tr>';
+                    echo'<tr><td>' . $info[$i]['nom_formation'] . '</td><td>' . $info[$i]['lieu'] . '</td><td>' . formatDate($info[$i]['date']) . '</td><td>' . $info[$i]['intervenants'] . '</td><td style="text-align:center;">' . documents($info[$i]['fichiers']) . '</td><td style="text-align:center;">' . getListConsultants($info[$i]['id_formation']) . '</td><td style="text-align:center;"><a data-placement="top" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');document.getElementById(\'formation-delete\').value=' . $info[$i]['id_formation'] . '" href="#delete-formation" data-toggle="modal" data-original-title="Supprimer" ><i class="icon-trash"></i></a></td><td style="text-align:center;"><a onmouseout="$(this).popover(\'hide\');" onmouseover="$(this).popover({content:\'' . str_replace('"', '’', str_replace("'", "’", $info[$i]['details_formation'])) . '\'});$(this).popover(\'show\');" href="" data-toggle="popover" data-placement="right"  data-html="TRUE"  data-original-title="Détails de la formation"><i class="icon icon-search"></i></a></td></tr>';
                 }
                 ?>
             </tbody>
@@ -35,7 +35,7 @@
     <br/>
     <div class="modal-body">
         <?php echo validation_errors(); ?>
-        <?php echo isset($error)?$error:''; ?>
+        <?php echo isset($error) ? $error : ''; ?>
         <?php echo form_open_multipart('admin_formations/add', array('class' => 'form-horizontal')); ?>
 
                 <div class="control-group">
@@ -72,12 +72,12 @@
                 <div class="control-group">
                     <label class="control-label" for="details-formation">Détails de la formation</label>
                     <div class="controls">
-                        <textarea name="details-formation" id="details-formation" rows="5" cols="3"><?php echo set_value('details-formation','...'); ?></textarea>
+                        <textarea name="details-formation" id="details-formation" rows="5" cols="3"><?php echo set_value('details-formation', ''); ?></textarea>
                     </div>
                 </div>
 
                 <div class="control-group">
-                    <label class="control-label" for="fichiers">Document</label>
+                    <label class="control-label" for="fichiers">Document (pdf ou zip)</label>
                     <div class="controls">
                         <span class="btn btn-file"><input type="file" name="fichiers" id="fichiers"/></span>
                     </div>
@@ -102,7 +102,7 @@
             <div class="modal-body">
                 Voulez-vous vraiment supprimer cette formation ?
 
-            </div>        
+            </div>
     <?php echo form_open('admin_formations/delete'); ?>
                 <div class="modal-footer">
 
@@ -115,6 +115,9 @@
 
 
 <?php echo (isset($modal) && $modal == TRUE) ? "<script>$('#add-formation').modal('show');</script>" : "" ?>
+                <script src="<?php echo base_url('assets/js/wysihtml5-0.3.0.js') ?>"></script>
+                <script src="<?php echo base_url('assets/js/bootstrap-wysihtml5.js') ?>"></script>
 <script>
     $('#dpYears').datetimepicker();
+    $('#details-formation').wysihtml5();
 </script>

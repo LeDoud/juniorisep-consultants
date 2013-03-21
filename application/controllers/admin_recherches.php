@@ -95,7 +95,7 @@ class Admin_recherches extends CI_Controller {
         $this->form_validation->set_rules('priorite', 'Priorité', 'trim|required|htmlspecialchars');
         $this->form_validation->set_rules('difficulte', 'Difficulté', 'trim|required|htmlspecialchars');
         $this->form_validation->set_rules('nbr_intervenants', 'Nombre de consultants requis', 'trim|required');
-        $this->form_validation->set_rules('details_recherche', 'Détails de la mission', 'required|min_length[10]|max_length[250]');
+        $this->form_validation->set_rules('details_recherche', 'Détails de la mission', 'required|min_length[10]|max_length[1000]');
 //+email  pour dire de faire de la pub
         if ($this->form_validation->run() == FALSE || (!$this->upload->do_upload('fichiers') && !empty($_FILES['fichiers']['name']))) {
             $data['error'] = $this->upload->display_errors('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button>', '</div>');

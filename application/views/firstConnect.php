@@ -13,7 +13,7 @@
     <div class="control-group">
         <label class="control-label" for="email">Email</label>
         <div class="controls">
-            <input type="text" id="email" name="email" value="<?php echo $info['email']; ?>">
+            <input type="text" id="email" name="email" placeholder="ex: <?php echo $info['email']; ?>" value="">
         </div>
     </div>
     <div class="control-group">

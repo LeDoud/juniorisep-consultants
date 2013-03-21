@@ -61,9 +61,10 @@ class User extends CI_Controller {
             $this->session->set_userdata('role', 'isepien');
 
             $this->email->from('espace-consultant@juniorisep.com', 'Espace Consultant');
-            $this->email->to('evan-yen@juniorisep.com'); //RH ou A1 ...
+            $this->email->to('rh@juniorisep.com'); //RH ou A1 ...
+            $this->email->cc('dsi@juniorisep.com');
             $this->email->set_mailtype("html");
-            $this->email->subject('[Espace Consultant] Nouvel utilisateur');
+            $this->email->subject('[Espace Consultant] Nouvel utilisateur : '.$this->input->post('prenom') . ' ' . $this->input->post('nom'));
             $this->email->message('<strong>' . $this->input->post('prenom') . ' ' . $this->input->post('nom') . '</strong> vient de s’inscrire.<br/> S’il est consultant inscrit à la Junior, veuillez activer ses droits via l’interface d’administration de l’espace consultant prévue à cet effet.<br/><br/>Bonne journée ;)');
 
             $this->email->send();
