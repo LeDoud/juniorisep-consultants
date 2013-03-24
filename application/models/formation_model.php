@@ -49,13 +49,13 @@ class Formation_model extends CI_Model {
         return $this->db->insert('formations', $data);
     }
 
-    public function update_formation($id) {
+    public function update_formation($id, $nomfichier='') {
         $data = array(
-            'nom_formation' => $this->input->post('nom'),
-            'lieu' => $this->input->post('lieu'),
-            'date' => $this->input->post('date'),
-            'intervenants' => $this->input->post('intervenants'),
-            'details_formation' => $this->input->post('details-formation'),
+            'nom_formation' => $this->input->post('nom-update'),
+            'lieu' => $this->input->post('lieu-update'),
+            'date' => $this->input->post('date-update'),
+            'intervenants' => $this->input->post('intervenants-update'),
+            'details_formation' => $this->input->post('details-formation-update'),
             'fichiers' => $nomfichier
         );
         $this->db->update('formations', $data, array('id_formation' => $id));

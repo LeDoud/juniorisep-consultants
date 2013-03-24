@@ -1,7 +1,7 @@
 <!-- En-tete -->
 <div class="row-fluid">
     <div class="span18 offset2 well">
-        <h2><img src="<?php echo base_url('assets/img/Shirt.png') ?>">
+        <h2><img alt="profil" src="<?php echo base_url('assets/img/Shirt.png') ?>">
             Mon Profil</h2>
     </div>
 </div>

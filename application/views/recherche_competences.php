@@ -2,7 +2,7 @@
 <div class="row-fluid">
     <div class="span18 offset2 well ">
 
-        <h3><img src="<?php echo base_url('assets/img/Wallet.png') ?>">
+        <h3><img alt="missions" src="<?php echo base_url('assets/img/Wallet.png') ?>">
             Recherche de compétences</h3>
     </div>
 
@@ -10,13 +10,13 @@
 <!-- Corps -->
 <div class="row-fluid">
     <!-- 1ere colonne -->
-    <div class="span18 offset2">
+    <div class="span18 offset2" >
         <table class="table table-striped table-bordered table-hover ">
             <thead><tr><th>Priorité</th><th>Type</th><th>Compétence(s) requise(s)</th><th>Difficulté</th><th>Consultant(s) requis</th><th>Chef de Projet</th><th>Posté le</th><th>Document(s)</th><th>Postuler</th><th>Détails</th></tr></thead>
             <tbody>
                 <?php
                 for ($i = 0; $i < $nbr_recherches; $i++) {
-                    echo'<tr><td>' . $info[$i]['priorite'] . '</td><td>' . $info[$i]['type'] . '</td><td>' . $info[$i]['competences'] . '</td><td>' . notation($info[$i]['difficulte']) . '</td><td style="text-align:center;">' . ($info[$i]['nbr_intervenants']) . '</td><td style="text-align:center;">' . respo($info[$i]['id_cdp']) . '</td><td style="text-align:center;">' . formatDate($info[$i]['date']) . '</td><td style="text-align:center;">' . documents($info[$i]['fichiers']) . '</td><td style="text-align:center;">' . postuler($role, $info[$i]['id_recherche'], $userdata_id) . '</td><td style="text-align:center;"><a onmouseout="$(this).popover(\'hide\');" onmouseover="$(this).popover({content:\''.str_replace('"','’',str_replace("'","’",$info[$i]['details_recherche'])).'\'});$(this).popover(\'show\');" href="" data-html="TRUE" data-toggle="popover" data-placement="bottom" data-original-title="Détails de la mission"><i class="icon icon-search"></i></a></td></tr>';
+                    echo'<tr><td>' . $info[$i]['priorite'] . '</td><td>' . $info[$i]['type'] . '</td><td>' . $info[$i]['competences'] . '</td><td>' . notation($info[$i]['difficulte']) . '</td><td style="text-align:center;">' . ($info[$i]['nbr_intervenants']) . '</td><td style="text-align:center;">' . respo($info[$i]['id_cdp']) . '</td><td style="text-align:center;">' . formatDate($info[$i]['date']) . '</td><td style="text-align:center;">' . documents($info[$i]['fichiers']) . '</td><td style="text-align:center;">' . postuler($role, $info[$i]['id_recherche'], $userdata_id) . '</td><td style="text-align:center;"><a onmouseout="$(this).popover(\'hide\');" onmouseover="$(this).popover({content:\'' . str_replace('"', "\'", str_replace("'", "\'", $info[$i]['details_recherche'])) . '\'});$(this).popover(\'show\');" href="" data-html="TRUE" data-toggle="popover" data-placement="bottom" data-original-title="Détails de la mission"><i class="icon icon-search"></i></a></td></tr>';
                 }
                 ?>
             </tbody>
@@ -38,7 +38,7 @@
         <?php echo form_open('recherche/postulate', array('class' => 'form-horizontal')); ?>
 
 
-                    <div class="control-group">            
+                    <div class="control-group">
                         <label class="control-label" for="motivation">Votre motivation pour postuler à cette mission : (50 caractères minimum)</label>
                         <div class="controls">
                             <textarea name="motivation" id="motivation" rows="10" cols="10" placeholder="Expliquez en quelques mots votre motivation..."><?php echo set_value('motivation'); ?></textarea>

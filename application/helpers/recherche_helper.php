@@ -117,4 +117,9 @@ function decrypt($string) {
     return $result;
 }
 
+function update_recherche($recherche) {
+
+    return 'document.getElementById(\'id-recherche-update\').value=\'' . $recherche['id_recherche'] . '\';document.getElementById(\'nom_mission-update\').value=\'' . $recherche['nom_mission'] . '\';document.getElementById(\'priorite-update\').value=\'' . $recherche['priorite'] . '\';document.getElementById(\'type-update\').value=\'' . $recherche['type'] . '\';document.getElementById(\'competences-update\').value=\'' . $recherche['competences'] . '\';document.getElementById(\'difficulte-update\').value=\'' . $recherche['difficulte'] . '\';document.getElementById(\'nbr_intervenants-update\').value=\'' . $recherche['nbr_intervenants'] . '\';appendEditor(\'' . str_replace('"', "\'", str_replace("'", "\'", $recherche['details_recherche'])) . '\');';
+}
+
 ?>

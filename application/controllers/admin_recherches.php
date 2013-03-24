@@ -96,7 +96,7 @@ class Admin_recherches extends CI_Controller {
         $this->form_validation->set_rules('difficulte', 'Difficulté', 'trim|required|htmlspecialchars');
         $this->form_validation->set_rules('nbr_intervenants', 'Nombre de consultants requis', 'trim|required');
         $this->form_validation->set_rules('details_recherche', 'Détails de la mission', 'required|min_length[10]|max_length[1000]');
-//+email  pour dire de faire de la pub
+
         if ($this->form_validation->run() == FALSE || (!$this->upload->do_upload('fichiers') && !empty($_FILES['fichiers']['name']))) {
             $data['error'] = $this->upload->display_errors('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button>', '</div>');
             $info = $this->Recherche_model->get_recherche_all();
@@ -111,7 +111,58 @@ class Admin_recherches extends CI_Controller {
         } else {
             $fichier = $this->upload->data();
             $nomfichier = $fichier['file_name'];
-            $this->Recherche_model->set_recherche($nomfichier, $userdata['id']);
+            $this->Recherche_model->set_recherche($userdata['id'], $nomfichier);
+            redirect('/admin_recherches', 'refresh');
+        }
+    }
+
+    public function update() {
+        $userdata = $this->session->all_userdata();
+        $this->load->helper('form');
+        $this->load->helper('recherche_helper');
+        $this->load->library('form_validation');
+        $this->load->library('email');
+        $this->load->library('upload');
+
+        if (!isset($userdata['logged_in']) || $userdata['logged_in'] == FALSE || $userdata['role'] != 'admin') {
+
+            redirect('/home/login', 'refresh');
+        }
+
+        $this->form_validation->set_message('required', 'Le champ %s est requis !');
+        $this->form_validation->set_message('trim', 'Les caractères spéciaux ne sont pas accepté pour le  champ %s !');
+        $this->form_validation->set_message('htmlspecialchars', 'Les caractères spéciaux ne sont pas accepté pour le  champ %s !');
+        $this->form_validation->set_message('valid_email', 'Veuillez spécifier une adresse email valide pour le champ %s !');
+        $this->form_validation->set_message('max_length', 'Le champ %s doit être plus court !');
+        $this->form_validation->set_message('min_length', 'Le champ %s doit être plus long !');
+        $this->form_validation->set_message('alpha', 'Le champ %s ne doit comporter que des lettres !');
+        $this->form_validation->set_message('numeric', 'Le champ %s ne doit comporter que des chiffres !');
+        $this->form_validation->set_error_delimiters('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button>', '</div>');
+
+        $this->form_validation->set_rules('nom_mission-update', 'Nom de la mission', 'trim|required|min_length[4]|max_length[25]|htmlspecialchars');
+        $this->form_validation->set_rules('type-update', 'Type de mission', 'trim|required|min_length[4]|max_length[25]|htmlspecialchars');
+        $this->form_validation->set_rules('competences-update', 'Compétences requises', 'trim|required|min_length[2]|max_length[50]|htmlspecialchars');
+        $this->form_validation->set_rules('priorite-update', 'Priorité', 'trim|required|htmlspecialchars');
+        $this->form_validation->set_rules('difficulte-update', 'Difficulté', 'trim|required|htmlspecialchars');
+        $this->form_validation->set_rules('nbr_intervenants-update', 'Nombre de consultants requis', 'trim|required');
+        $this->form_validation->set_rules('details_recherche-update', 'Détails de la mission', 'required|min_length[10]|max_length[1000]');
+        $this->form_validation->set_rules('id-recherche-update', 'Recherche de compétence', 'trim|required|min_length[1]');
+
+        if ($this->form_validation->run() == FALSE || (!$this->upload->do_upload('fichiers-update') && !empty($_FILES['fichiers-update']['name']))) {
+            $data['error'] = $this->upload->display_errors('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button>', '</div>');
+            $info = $this->Recherche_model->get_recherche_all();
+            $data['modal2'] = TRUE;
+            $data['nbr_recherches'] = count($info);
+            $data['info'] = $info;
+            $data['title'] = 'Administration';
+            $data['menu'] = 'admin_recherches';
+            $this->load->view('include/admin_header', $data);
+            $this->load->view('admin_recherches', $data);
+            $this->load->view('include/footer');
+        } else {
+            $fichier = $this->upload->data();
+            $nomfichier = $fichier['file_name'];
+            $this->Recherche_model->update_recherche($this->input->post('id-recherche-update'), $userdata['id'], $nomfichier);
             redirect('/admin_recherches', 'refresh');
         }
     }

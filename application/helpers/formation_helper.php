@@ -32,7 +32,7 @@ function getListConsultants($id_formation) {
     if ($title == '') {
         $string = '<a data-placement="top" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');" href="" data-html="TRUE" title="Personne pour le moment !"><i class="icon icon-user"></i></a>';
     } else {
-        $string = '<a data-placement="top" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip({title:\''.str_replace('"','’',str_replace("'","’",$title)).'\'});$(this).tooltip(\'show\');" href="" data-html="TRUE"><i class="icon icon-user"></i></a>';
+        $string = '<a data-placement="top" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip({title:\'' . str_replace('"', '’', str_replace("'", "’", $title)) . '\'});$(this).tooltip(\'show\');" href="" data-html="TRUE"><i class="icon icon-user"></i></a>';
     }
     return $string;
 }
@@ -93,6 +93,11 @@ function decrypt($string) {
     }
 
     return $result;
+}
+
+function update_formation($formation) {
+
+    return 'document.getElementById(\'id-formation-update\').value=\'' . $formation['id_formation'] . '\';document.getElementById(\'nom-update\').value=\'' . $formation['nom_formation'] . '\';document.getElementById(\'lieu-update\').value=\'' . $formation['lieu'] . '\';document.getElementById(\'date-update\').value=\'' . $formation['date'] . '\';document.getElementById(\'intervenants-update\').value=\'' . $formation['intervenants'] . '\';appendEditor(\'' . str_replace('"', "\'", str_replace("'", "\'", $formation['details_formation'])) . '\');';
 }
 
 ?>

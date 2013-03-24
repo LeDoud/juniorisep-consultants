@@ -48,7 +48,7 @@ class Recherche_model extends CI_Model {
         return $query->row_array();
     }
 
-    public function set_recherche($nomfichier='', $id_cdp) {
+    public function set_recherche($id_cdp, $nomfichier='') {
         $data = array(
             'nom_mission' => $this->input->post('nom_mission'),
             'priorite' => $this->input->post('priorite'),
@@ -68,16 +68,15 @@ class Recherche_model extends CI_Model {
 
     public function update_recherche($id, $id_cdp, $nomfichier='') {
         $data = array(
-            'nom_mission' => $this->input->post('nom_mission'),
-            'priorite' => $this->input->post('priorite'),
-            'type' => $this->input->post('type'),
-            'competences' => $this->input->post('competences'),
-            'difficulte' => $this->input->post('difficulte'),
-            'nbr_intervenants' => $this->input->post('nbr_intervenants'),
-            'details_recherche' => $this->input->post('details_recherche'),
+            'nom_mission' => $this->input->post('nom_mission-update'),
+            'priorite' => $this->input->post('priorite-update'),
+            'type' => $this->input->post('type-update'),
+            'competences' => $this->input->post('competences-update'),
+            'difficulte' => $this->input->post('difficulte-update'),
+            'nbr_intervenants' => $this->input->post('nbr_intervenants-update'),
+            'details_recherche' => $this->input->post('details_recherche-update'),
             'date' => date('Y-m-d H:i:s'),
             'fichiers' => $nomfichier,
-            'dispo' => $this->input->post('dispo'),
             'id_cdp' => $id_cdp
         );
         $this->db->update('recherche_competences', $data, array('id_recherche' => $id));
