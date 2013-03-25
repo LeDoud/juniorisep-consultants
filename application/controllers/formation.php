@@ -67,7 +67,9 @@ class Formation extends CI_Controller {
             $this->load->view('formations', $data);
             $this->load->view('include/footer');
         } else {
-            $this->Formation_model->register_formation(decrypt($this->input->post('formation-sign')), $userdata['id']);
+            if (count($this->Formation_model->check_consultant(decrypt($this->input->post('formation-sign')), $userdata['id'])) == 0) {
+                $this->Formation_model->register_formation(decrypt($this->input->post('formation-sign')), $userdata['id']);
+            }
             redirect('/formation', 'refresh');
         }
     }

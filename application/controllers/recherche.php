@@ -78,6 +78,9 @@ class Recherche extends CI_Controller {
         } else {
             $data['modal'] = FALSE;
             $data['id_mission'] = "";
+            
+            if (count($this->Recherche_model->check_consultant(decrypt($this->input->post('recherche-post')), $userdata['id'])) == 0) {
+
             $this->Recherche_model->postulate_recherche(decrypt($this->input->post('recherche-post')), $userdata['id']);
             $recherche = $this->Recherche_model->get_recherche(decrypt($this->input->post('recherche-post')));
             $user_cdp = $this->User_model->get_user_byId($recherche['id_cdp']);
@@ -85,9 +88,11 @@ class Recherche extends CI_Controller {
             $this->email->to($user_cdp['email']);
             $this->email->set_mailtype("html");
             $this->email->subject('[Espace Consultant] Postulant pour une mission [' . $recherche['nom_mission'] . ']');
-            $this->email->message('<strong>' . $userdata['prenom'] . ' ' . $userdata['nom'] . '</strong> vient de postuler à ta mission : <strong>' . $recherche['nom_mission'] . '</strong><br/><br/>Voici son message : <br/><br/><em>&laquo;' . $this->input->post('motivation') . '&raquo;</em><br/><br/><a href="mailto:' . $userdata['email'] . '">Lui répondre</a><br/><br/><br/>Bonne journée ;)');
+            $this->email->message('<strong>' . $userdata['prenom'] . ' ' . $userdata['nom'] . '</strong> vient de postuler à ta mission : <strong>' . $recherche['nom_mission'] . '</strong><br/><br/>Voici son message : <br/><br/><em>&laquo;' . $this->input->post('motivation') . '&raquo;</em><br/><br/><a href="mailto:' . $userdata['email'] . '">Lui répondre par mail</a> ou par téléphone : '.$userdata['tel'] .'<br/><br/><br/>Bonne journée ;)');
 
             $this->email->send();
+
+            }
             redirect('/recherche', 'refresh');
         }
     }

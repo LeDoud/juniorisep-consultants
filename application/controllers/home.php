@@ -80,6 +80,7 @@ class Home extends CI_Controller {
                     $this->session->set_userdata('role', $info['role']);
                     $this->session->set_userdata('id', $info['id_consultant']);
                     $this->session->set_userdata('email', $info['email']);
+                    $this->session->set_userdata('tel', $info['tel']);
 
                     $this->User_model->update_user_lastConnect($username);
                     redirect('/home/accueil', 'refresh');
