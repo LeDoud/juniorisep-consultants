@@ -1,4 +1,4 @@
-## Application Web : Espace consultant V1.0 (2013) par Edouard VY
+## Application Web : Espace consultant v1.0 (2013) par Edouard VY
 
 
 Cette application a été réalisée grâce à la combinaison des frameworks CodeIgniter et Twitter Bootstrap.
