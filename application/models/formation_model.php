@@ -13,6 +13,21 @@ class Formation_model extends CI_Model {
         if ($id === FALSE) {
             //$query = $this->db->get('formations');
             $this->db->from('formations');
+            $this->db->where('date >=',date('Y-m-d H:i:s'));
+            $this->db->order_by("date", "desc");
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+
+        $query = $this->db->get_where('formations', array('id_formation' => $id));
+        return $query->row_array();
+    }
+
+    public function get_formation_old($id = FALSE) {
+        if ($id === FALSE) {
+            //$query = $this->db->get('formations');
+            $this->db->from('formations');
+            $this->db->where('date <',date('Y-m-d H:i:s'));
             $this->db->order_by("date", "desc");
             $query = $this->db->get();
             return $query->result_array();

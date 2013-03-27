@@ -32,9 +32,11 @@ class Admin_formations extends CI_Controller {
         $data['menu'] = 'admin_formations';
 
         $info = $this->Formation_model->get_formation();
+        $info_old = $this->Formation_model->get_formation_old();
         $data['nbr_formations'] = count($info);
+        $data['nbr_formations_old'] = count($info_old);
         $data['info'] = $info;
-
+        $data['info_old'] = $info_old;
         $this->load->view('include/admin_header', $data);
         $this->load->view('admin_formations', $data);
         $this->load->view('include/footer');
@@ -71,9 +73,12 @@ class Admin_formations extends CI_Controller {
         if ($this->form_validation->run() == FALSE || (!$this->upload->do_upload('fichiers') && !empty($_FILES['fichiers']['name']))) {
             $data['error'] = $this->upload->display_errors('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button>', '</div>');
             $info = $this->Formation_model->get_formation();
+            $info_old = $this->Formation_model->get_formation_old();
             $data['modal'] = TRUE;
             $data['nbr_formations'] = count($info);
+            $data['nbr_formations_old'] = count($info_old);
             $data['info'] = $info;
+            $data['info_old'] = $info_old;
             $data['title'] = 'Administration';
             $data['menu'] = 'admin_formations';
             $this->load->view('include/admin_header', $data);
@@ -119,9 +124,12 @@ class Admin_formations extends CI_Controller {
         if ($this->form_validation->run() == FALSE || (!$this->upload->do_upload('fichiers-update') && !empty($_FILES['fichiers-update']['name']))) {
             $data['error'] = $this->upload->display_errors('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button>', '</div>');
             $info = $this->Formation_model->get_formation();
+            $info_old = $this->Formation_model->get_formation_old();
             $data['modal2'] = TRUE;
             $data['nbr_formations'] = count($info);
+            $data['nbr_formations_old'] = count($info_old);
             $data['info'] = $info;
+            $data['info_old'] = $info_old;
             $data['title'] = 'Administration';
             $data['menu'] = 'admin_formations';
             $this->load->view('include/admin_header', $data);
@@ -150,8 +158,11 @@ class Admin_formations extends CI_Controller {
         $this->form_validation->set_rules('formation-delete', 'Formation', 'required|min_length[1]');
         if ($this->form_validation->run() == FALSE) {
             $info = $this->Formation_model->get_formation();
+            $info_old = $this->Formation_model->get_formation_old();
             $data['nbr_formations'] = count($info);
+            $data['nbr_formations_old'] = count($info_old);
             $data['info'] = $info;
+            $data['info_old'] = $info_old;
             $data['title'] = 'Administration';
             $data['menu'] = 'admin_formations';
 

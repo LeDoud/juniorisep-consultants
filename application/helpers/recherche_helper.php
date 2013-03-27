@@ -39,9 +39,9 @@ function formatDate($date) {
 
 function postuler($role, $information, $user_id) {
     if ($role == 'isepien') {
-        $string = '<a data-placement="top" data-toggle="tooltip" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');" data-original-title="Pour postuler, inscris toi d’abord à la Junior ;)" href=""><i class="icon icon-flag"></i></a>';
+        $string = '<a data-placement="top" data-toggle="tooltip" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');" data-original-title="Pour postuler, inscris toi d’abord à la Junior ;)" href=""><i class="icon icon-envelope"></i></a>';
     } else {
-        $string = (checkConsultant($information, $user_id) == TRUE) ? 'Postulé!' : '<a data-placement="top" data-toggle="modal" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');document.getElementById(\'recherche-post\').value=\'' . encrypt($information) . '\'" data-original-title="Postuler" href="#post-recherche"><i class="icon icon-flag"></i></a>';
+        $string = (checkConsultant($information, $user_id) == TRUE) ? 'Postulé!' : '<a data-placement="top" data-toggle="modal" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');document.getElementById(\'recherche-post\').value=\'' . encrypt($information) . '\'" data-original-title="Postuler" href="#post-recherche"><i class="icon icon-envelope"></i></a>';
     }
 
     return $string;

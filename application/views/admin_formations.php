@@ -11,12 +11,30 @@
 <div class="row-fluid">
     <!-- 1ere colonne -->
     <div class="span16 offset2" >
+        <h4>Prochaines formations</h4>
         <table class="table table-striped table-bordered table-hover">
             <thead><tr><th>Intitulé</th><th>Lieu</th><th>Date</th><th>Intervenants</th><th>Document(s)</th><th>Consultant(s) inscrit(s)</th><th>Editer</th><th>Détails</th></tr></thead>
             <tbody>
                 <?php
                 for ($i = 0; $i < $nbr_formations; $i++) {
                     echo'<tr><td>' . $info[$i]['nom_formation'] . '</td><td>' . $info[$i]['lieu'] . '</td><td>' . formatDate($info[$i]['date']) . '</td><td>' . $info[$i]['intervenants'] . '</td><td style="text-align:center;">' . documents($info[$i]['fichiers']) . '</td><td style="text-align:center;">' . getListConsultants($info[$i]['id_formation']) . '</td><td style="text-align:center;"><a data-placement="top" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');' . update_formation($info[$i]) . '" href="#update-formation" data-toggle="modal" data-original-title="Modifier" ><i class="icon-edit"></i></a>&nbsp;&nbsp;<a data-placement="top" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');document.getElementById(\'formation-delete\').value=' . $info[$i]['id_formation'] . '" href="#delete-formation" data-toggle="modal" data-original-title="Supprimer" ><i class="icon-trash"></i></a></td><td style="text-align:center;"><a onmouseout="$(this).popover(\'hide\');" onmouseover="$(this).popover({content:\'' . str_replace('"', "\'", str_replace("'", "\'", $info[$i]['details_formation'])) . '\'});$(this).popover(\'show\');" href="" data-toggle="popover" data-placement="right"  data-html="TRUE"  data-original-title="Détails de la formation"><i class="icon icon-search"></i></a></td></tr>';
+                }
+                ?>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<div class="row-fluid">
+    <!-- 1ere colonne -->
+    <div class="span16 offset2" >
+        <h4>Anciennes formations</h4>
+        <table class="table table-striped table-bordered table-hover">
+            <thead><tr><th>Intitulé</th><th>Lieu</th><th>Date</th><th>Intervenants</th><th>Document(s)</th><th>Consultant(s) inscrit(s)</th><th>Editer</th><th>Détails</th></tr></thead>
+            <tbody>
+                <?php
+                for ($i = 0; $i < $nbr_formations_old; $i++) {
+                    echo'<tr><td>' . $info_old[$i]['nom_formation'] . '</td><td>' . $info_old[$i]['lieu'] . '</td><td>' . formatDate($info_old[$i]['date']) . '</td><td>' . $info_old[$i]['intervenants'] . '</td><td style="text-align:center;">' . documents($info_old[$i]['fichiers']) . '</td><td style="text-align:center;">' . getListConsultants($info_old[$i]['id_formation']) . '</td><td style="text-align:center;"><a data-placement="top" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');' . update_formation($info_old[$i]) . '" href="#update-formation" data-toggle="modal" data-original-title="Modifier" ><i class="icon-edit"></i></a>&nbsp;&nbsp;<a data-placement="top" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');document.getElementById(\'formation-delete\').value=' . $info_old[$i]['id_formation'] . '" href="#delete-formation" data-toggle="modal" data-original-title="Supprimer" ><i class="icon-trash"></i></a></td><td style="text-align:center;"><a onmouseout="$(this).popover(\'hide\');" onmouseover="$(this).popover({content:\'' . str_replace('"', "\'", str_replace("'", "\'", $info_old[$i]['details_formation'])) . '\'});$(this).popover(\'show\');" href="" data-toggle="popover" data-placement="right"  data-html="TRUE"  data-original-title="Détails de la formation"><i class="icon icon-search"></i></a></td></tr>';
                 }
                 ?>
             </tbody>

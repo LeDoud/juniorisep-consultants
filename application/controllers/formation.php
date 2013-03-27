@@ -31,9 +31,11 @@ class Formation extends CI_Controller {
         $data['userdata_id'] = $userdata['id'];
 
         $info = $this->Formation_model->get_formation();
-
+        $info_old = $this->Formation_model->get_formation_old();
         $data['nbr_formations'] = count($info);
+        $data['nbr_formations_old'] = count($info_old);
         $data['info'] = $info;
+        $data['info_old'] = $info_old;
         $this->load->view('include/header', $data);
         $this->load->view('formations', $data);
         $this->load->view('include/footer');
@@ -61,8 +63,11 @@ class Formation extends CI_Controller {
             $data['menu'] = 'formation';
 
             $info = $this->Formation_model->get_formation();
+            $info_old = $this->Formation_model->get_formation_old();
             $data['nbr_formations'] = count($info);
+            $data['nbr_formations_old'] = count($info_old);
             $data['info'] = $info;
+            $data['info_old'] = $info_old;
             $this->load->view('include/header', $data);
             $this->load->view('formations', $data);
             $this->load->view('include/footer');

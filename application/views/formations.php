@@ -12,12 +12,29 @@
 <div class="row-fluid">
     <!-- 1ere colonne -->
     <div class="span18 offset2" >
+        <h4>Prochaines formations</h4>
         <table class="table table-striped table-bordered table-hover">
             <thead><tr><th>Intitulé</th><th>Lieu</th><th>Date</th><th>Intervenants</th><th>Document(s)</th><th>Inscription</th><th>Détails</th></tr></thead>
             <tbody>
                 <?php
                 for ($i = 0; $i < $nbr_formations; $i++) {
                     echo'<tr><td>' . $info[$i]['nom_formation'] . '</td><td>' . $info[$i]['lieu'] . '</td><td>' . formatDate($info[$i]['date']) . '</td><td>' . $info[$i]['intervenants'] . '</td><td style="text-align:center;">' . ((checkConsultant($info[$i]['id_formation'], $userdata_id) == TRUE) ? documents($info[$i]['fichiers']) : documents()) . '</td><td style="text-align:center;">' . ((checkConsultant($info[$i]['id_formation'], $userdata_id) == TRUE) ? 'Inscrit!' : '<a data-placement="top" data-toggle="modal" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');document.getElementById(\'formation-sign\').value=\'' . encrypt($info[$i]['id_formation']) . '\'" data-original-title="M’inscrire" href="#sign-formation"><i class="icon icon-flag"></i></a>') . '</td><td style="text-align:center;"><a onmouseout="$(this).popover(\'hide\');" onmouseover="$(this).popover({content:\'' . str_replace('"', "\'", str_replace("'", "\'", $info[$i]['details_formation'])) . '\'});$(this).popover(\'show\');" href="" data-html="TRUE" data-toggle="popover" data-placement="bottom" data-original-title="Détails de la formation"><i class="icon icon-search"></i></a></td></tr>';
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row-fluid">
+    <!-- 1ere colonne -->
+    <div class="span18 offset2" >
+        <h4>Anciennes formations</h4>
+        <table class="table table-striped table-bordered table-hover">
+            <thead><tr><th>Intitulé</th><th>Lieu</th><th>Date</th><th>Intervenants</th><th>Document(s)</th><th>Inscription</th><th>Détails</th></tr></thead>
+            <tbody>
+                <?php
+                for ($i = 0; $i < $nbr_formations_old; $i++) {
+                    echo'<tr><td>' . $info_old[$i]['nom_formation'] . '</td><td>' . $info_old[$i]['lieu'] . '</td><td>' . formatDate($info_old[$i]['date']) . '</td><td>' . $info_old[$i]['intervenants'] . '</td><td style="text-align:center;">' . ((checkConsultant($info_old[$i]['id_formation'], $userdata_id) == TRUE) ? documents($info_old[$i]['fichiers']) : documents()) . '</td><td style="text-align:center;">' . ((checkConsultant($info_old[$i]['id_formation'], $userdata_id) == TRUE) ? 'Inscrit!' : '<a data-placement="top" data-toggle="modal" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');document.getElementById(\'formation-sign\').value=\'' . encrypt($info_old[$i]['id_formation']) . '\'" data-original-title="M’inscrire" href="#sign-formation"><i class="icon icon-flag"></i></a>') . '</td><td style="text-align:center;"><a onmouseout="$(this).popover(\'hide\');" onmouseover="$(this).popover({content:\'' . str_replace('"', "\'", str_replace("'", "\'", $info_old[$i]['details_formation'])) . '\'});$(this).popover(\'show\');" href="" data-html="TRUE" data-toggle="popover" data-placement="bottom" data-original-title="Détails de la formation"><i class="icon icon-search"></i></a></td></tr>';
                 }
                 ?>
             </tbody>
