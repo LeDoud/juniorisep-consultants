@@ -19,6 +19,9 @@
                 for ($i = 0; $i < $nbr_formations; $i++) {
                     echo'<tr><td>' . $info[$i]['nom_formation'] . '</td><td>' . $info[$i]['lieu'] . '</td><td>' . formatDate($info[$i]['date']) . '</td><td>' . $info[$i]['intervenants'] . '</td><td style="text-align:center;">' . documents($info[$i]['fichiers']) . '</td><td style="text-align:center;">' . getListConsultants($info[$i]['id_formation']) . '</td><td style="text-align:center;"><a data-placement="top" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');' . update_formation($info[$i]) . '" href="#update-formation" data-toggle="modal" data-original-title="Modifier" ><i class="icon-edit"></i></a>&nbsp;&nbsp;<a data-placement="top" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');document.getElementById(\'formation-delete\').value=' . $info[$i]['id_formation'] . '" href="#delete-formation" data-toggle="modal" data-original-title="Supprimer" ><i class="icon-trash"></i></a></td><td style="text-align:center;"><a onmouseout="$(this).popover(\'hide\');" onmouseover="$(this).popover({content:\'' . str_replace('"', "\'", str_replace("'", "\'", $info[$i]['details_formation'])) . '\'});$(this).popover(\'show\');" href="" data-toggle="popover" data-placement="right"  data-html="TRUE"  data-original-title="Détails de la formation"><i class="icon icon-search"></i></a></td></tr>';
                 }
+                if ($nbr_formations == 0) {
+                    echo'<tr><td colspan="8">Aucune formation à venir</td></tr>';
+                }
                 ?>
             </tbody>
         </table>
@@ -35,6 +38,9 @@
                 <?php
                 for ($i = 0; $i < $nbr_formations_old; $i++) {
                     echo'<tr><td>' . $info_old[$i]['nom_formation'] . '</td><td>' . $info_old[$i]['lieu'] . '</td><td>' . formatDate($info_old[$i]['date']) . '</td><td>' . $info_old[$i]['intervenants'] . '</td><td style="text-align:center;">' . documents($info_old[$i]['fichiers']) . '</td><td style="text-align:center;">' . getListConsultants($info_old[$i]['id_formation']) . '</td><td style="text-align:center;"><a data-placement="top" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');' . update_formation($info_old[$i]) . '" href="#update-formation" data-toggle="modal" data-original-title="Modifier" ><i class="icon-edit"></i></a>&nbsp;&nbsp;<a data-placement="top" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');document.getElementById(\'formation-delete\').value=' . $info_old[$i]['id_formation'] . '" href="#delete-formation" data-toggle="modal" data-original-title="Supprimer" ><i class="icon-trash"></i></a></td><td style="text-align:center;"><a onmouseout="$(this).popover(\'hide\');" onmouseover="$(this).popover({content:\'' . str_replace('"', "\'", str_replace("'", "\'", $info_old[$i]['details_formation'])) . '\'});$(this).popover(\'show\');" href="" data-toggle="popover" data-placement="right"  data-html="TRUE"  data-original-title="Détails de la formation"><i class="icon icon-search"></i></a></td></tr>';
+                }
+                if ($nbr_formations_old == 0) {
+                    echo'<tr><td colspan="8">Aucune ancienne formation</td></tr>';
                 }
                 ?>
             </tbody>

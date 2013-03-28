@@ -18,6 +18,9 @@
                 for ($i = 0; $i < $nbr_recherches; $i++) {
                     echo'<tr><td>' . $info[$i]['priorite'] . '</td><td>' . $info[$i]['type'] . '</td><td>' . $info[$i]['competences'] . '</td><td>' . notation($info[$i]['difficulte']) . '</td><td style="text-align:center;">' . ($info[$i]['nbr_intervenants']) . '</td><td style="text-align:center;">' . respo($info[$i]['id_cdp']) . '</td><td style="text-align:center;">' . formatDate($info[$i]['date']) . '</td><td style="text-align:center;">' . documents($info[$i]['fichiers']) . '</td><td style="text-align:center;">' . postuler($role, $info[$i]['id_recherche'], $userdata_id) . '</td><td style="text-align:center;"><a onmouseout="$(this).popover(\'hide\');" onmouseover="$(this).popover({content:\'' . str_replace('"', "\'", str_replace("'", "\'", $info[$i]['details_recherche'])) . '\'});$(this).popover(\'show\');" href="" data-html="TRUE" data-toggle="popover" data-placement="bottom" data-original-title="Détails de la mission"><i class="icon icon-search"></i></a></td></tr>';
                 }
+                                if ($nbr_recherches == 0) {
+                    echo'<tr><td colspan="10">Aucune mission pour le moment</td></tr>';
+                }
                 ?>
             </tbody>
         </table>

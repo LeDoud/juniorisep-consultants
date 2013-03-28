@@ -23,6 +23,9 @@
                     }
                     echo'<tr><td>' . $info[$i]['priorite'] . '</td><td>' . $info[$i]['type'] . '</td><td>' . $info[$i]['competences'] . '</td><td>' . notation($info[$i]['difficulte']) . '</td><td style="text-align:center;">' . ($info[$i]['nbr_intervenants']) . '</td><td style="text-align:center;">' . respo($info[$i]['id_cdp']) . '</td><td style="text-align:center;">' . formatDate($info[$i]['date']) . '</td><td style="text-align:center;">' . getListConsultants($info[$i]['id_recherche']) . '</td><td style="text-align:center;">' . documents($info[$i]['fichiers']) . '</td><td>' . $select . '</td><td style="text-align:center;"><a data-placement="top" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');' . update_recherche($info[$i]) . '" href="#update-recherche" data-toggle="modal" data-original-title="Modifier" ><i class="icon-edit"></i></a>&nbsp;&nbsp;<a data-placement="top" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');document.getElementById(\'recherche-delete\').value=' . $info[$i]['id_recherche'] . '" href="#delete-recherche" data-toggle="modal" data-original-title="Supprimer"><i class="icon icon-trash"></i></a></td><td style="text-align:center;"><a onmouseout="$(this).popover(\'hide\');" onmouseover="$(this).popover({content:\'' . str_replace('"', "\'", str_replace("'", "\'", $info[$i]['details_recherche'])) . '\'});$(this).popover(\'show\');" href="" data-toggle="popover" data-placement="bottom"  data-html="TRUE" data-original-title="Détails de la mission <strong>' . $info[$i]['nom_mission'] . '</strong>"><i class="icon icon-search"></i></a></td></tr>';
                 }
+                                if ($nbr_recherches == 0) {
+                    echo'<tr><td colspan="12">Aucune recherche de compétences pour le moment</td></tr>';
+                }
                 ?>
             </tbody>
         </table>
