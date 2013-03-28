@@ -41,7 +41,12 @@
                 <tr><td width="40%"><?php echo $comp_n[$i]; ?></td><td width="60%"><div class="progress">
                             <div onmouseout="$(this).tooltip('hide');" onmouseover="$(this).tooltip('show');" data-toggle="tooltip" data-original-title="<?php echo $lvl_n[$i]; ?>" class="bar" style="width: <?php echo $lvl_p[$i]; ?>%;background-image: none;background-color: <?php echo $lvl_c[$i]; ?>;"></div>
                         </div></td></tr>
-            <?php } ?></table>
+            <?php
+            }
+            if ($nbr_competence == 0) {
+                echo'<tr><td colspan="2">Aucune compétence pour le moment</td></tr>';
+            }
+            ?></table>
 
         <br/>
         <br/>

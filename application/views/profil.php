@@ -42,12 +42,17 @@
                 <tr><td width="30%"><?php echo $comp_n[$i]; ?></td><td width="60%"><div class="progress">
                             <div onmouseout="$(this).tooltip('hide');" onmouseover="$(this).tooltip('show');" data-toggle="tooltip" data-original-title="<?php echo $lvl_n[$i]; ?>" class="bar" style="width: <?php echo $lvl_p[$i]; ?>%;background-image: none;background-color: <?php echo $lvl_c[$i]; ?>;"></div>
                         </div></td><td width="10%" style="text-align:center "><a data-placement="right" onmouseout="$(this).tooltip('hide');" onmouseover="$(this).tooltip('show');document.getElementById('compet-delete').value='<?php echo encrypt($comp_index[$i]); ?>'" href="#delete-competence" data-toggle="modal" data-original-title="Supprimer" ><i class="icon-trash"></i></a></td></tr>
-            <?php } ?></table>
+            <?php
+            }
+            if ($nbr_competence == 0) {
+                echo'<tr><td colspan="3">Aucune compétence pour le moment</td></tr>';
+            }
+            ?></table>
         <a href="#add-competence" role="button" class="btn btn-primary" data-toggle="modal">Ajouter une compétence</a>
-        <?php if ($nbr_competence != 0) {
-        ?>
+        <?php if ($nbr_competence != 0) { ?>
                 <a href="#update-competence" role="button" class="btn btn-primary" data-toggle="modal">Mettre à jour mes compétences</a>
-        <?php } ?>
+        <?php }
+        ?>
             <br/>
             <br/>
         </div>
