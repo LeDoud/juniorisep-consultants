@@ -16,13 +16,56 @@
 
 </div>
 <div class="row-fluid">
-    <div id="carre1" class="span6 offset1 well"><h3><a href="profil"><img src="<?php echo base_url('assets/img/Shirt.png') ?>">Profil</a></h3></div>
-    <div id="carre2" class="span6 offset1 well"><h3><a href="recherche_competences"><img src="<?php echo base_url('assets/img/Wallet.png') ?>">Missions</a></h3></div>
-                <?php
-                if ($role != 'isepien') {
-                    echo'<div id="carre3" class="span6 offset1 well"><h3><a href="formations"><img src="' . base_url('assets/img/Clipboard.png') . '">Formations</a></h3></div>';
-                } else {
-                    echo'<div id="carre3" class="span6 offset1 well" ><h3 data-toggle="tooltip" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');" title="Inscris toi à la Junior pour pouvoir accéder aux formations !"><img src="' . base_url('assets/img/Clipboard.png') . '">Formations</h3></div>';
-                }
-                ?>
+    <div id="carre1" class="span6 offset1 well"><h3><a href="<?= site_url() ?>user"><img src="<?php echo base_url('assets/img/Shirt.png') ?>">Profil</a></h3></div>
+    <div id="carre2" class="span6 offset1 well"><h3><a href="<?= site_url() ?>recherche"><img src="<?php echo base_url('assets/img/Wallet.png') ?>">Missions</a></h3></div>
+    <?php
+        if ($role != 'isepien') {
+            echo'<div id="carre3" class="span6 offset1 well"><h3><a href="' . site_url() . 'formation"><img src="' . base_url('assets/img/Clipboard.png') . '">Formations</a></h3></div>';
+        } else {
+            echo'<div id="carre3" class="span6 offset1 well" ><h3 data-toggle="tooltip" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');" title="Inscris toi à la Junior pour pouvoir accéder aux formations !"><img src="' . base_url('assets/img/Clipboard.png') . '">Formations</h3></div>';
+        }
+    ?>
 </div>
+<div class="row-fluid">
+    <div class="span20 offset1 well" id="twitter"></div>
+</div>
+
+<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+    document.write = function() {
+        var str = '';
+        for (var i = 0; i < arguments.length; i++) {
+            str += arguments[i];
+        }
+        document.getElementById('twitter').innerHTML += str;
+    };
+
+    new TWTR.Widget({
+        version: 2,
+        type: 'profile',
+        rpp: 15,
+        interval: 6000,
+        width: 'auto',
+        height: 150,
+        theme: {
+            shell: {
+                background: '#f5f5f5',
+                color: '#70549a'
+            },
+            tweets: {
+                background: '#f6f6f6',
+                color: '#70549a',
+                links: '#1388d2'
+            }
+        },
+        features: {
+            scrollbar: true,
+            loop: false,
+            live: true,
+            hashtags: true,
+            timestamp: true,
+            avatars: true,
+            behavior: 'all'
+        }
+    }).render().setUser('JournalDuGeek').start();
+</script>

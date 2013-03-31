@@ -105,6 +105,7 @@ class Home extends CI_Controller {
 
     public function accueil() {
         $userdata = $this->session->all_userdata();
+        $this->load->helper('accueils_helper');
         if (!isset($userdata['logged_in']) || $userdata['logged_in'] == FALSE) {
 
             redirect('/home/login', 'refresh');

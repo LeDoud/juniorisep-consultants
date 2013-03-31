@@ -73,7 +73,7 @@ $config['uri_protocol']	= 'AUTO';
 | http://codeigniter.com/user_guide/general/urls.html
 */
 
-$config['url_suffix'] = '.aspx'; //coup de bluff
+$config['url_suffix'] = ''; //coup de bluff
 
 /*
 |--------------------------------------------------------------------------

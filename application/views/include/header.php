@@ -49,15 +49,15 @@
                         <ul id="menu-primary-navigation" class="nav">
                             <li><a><i><?= (isset($userdata['prenom'])) ? $userdata['prenom'] . ' ' . $userdata['nom'] : $userdata['login'] ?></i></a></li>
                             <li <?php echo ($menu == 'home') ? 'class="active menu-"' : ''; ?>><a href="<?= site_url() ?>"><i class="icon-home"></i></a></li>
-                            <li <?php echo ($menu == 'profil') ? 'class="active menu-"' : ''; ?>><a href="profil"><i class="icon-user icon-white"></i>Profil</a></li>
-                            <li <?php echo ($menu == 'recherche') ? 'class="active menu-"' : ''; ?>><a href="recherche_competences"><i class="icon-shopping-cart"></i>Missions</a></li>
+                            <li <?php echo ($menu == 'profil') ? 'class="active menu-"' : ''; ?>><a href="<?= site_url() ?>user"><i class="icon-user icon-white"></i>Profil</a></li>
+                            <li <?php echo ($menu == 'recherche') ? 'class="active menu-"' : ''; ?>><a href="<?= site_url() ?>recherche"><i class="icon-shopping-cart"></i>Missions</a></li>
                         <?php if ($userdata['role'] != 'isepien') {
-                        ?><li <?php echo ($menu == 'formation') ? 'class="active menu-"' : ''; ?>><a href="formations"><i class="icon-briefcase"></i>Formations</a></li><?php } else {
+                        ?><li <?php echo ($menu == 'formation') ? 'class="active menu-"' : ''; ?>><a href="<?= site_url() ?>formation"><i class="icon-briefcase"></i>Formations</a></li><?php } else {
  ?>
                             <li><a data-placement="bottom" data-toggle="tooltip" onmouseout="$(this).tooltip('hide');" onmouseover="$(this).tooltip('show');" title="Inscris toi à la Junior pour pouvoir accéder aux formations !"><i class="icon-briefcase"></i>Formations</a></li>
 <?php } ?>
 
-                        <?php if ($userdata['role'] == 'admin') { ?><li><a href="admin"><i class="icon-lock"></i>Administration</a></li> <?php } ?>
+                        <?php if ($userdata['role'] == 'admin') { ?><li><a href="<?= site_url() ?>admin"><i class="icon-lock"></i>Administration</a></li> <?php } ?>
                         <li><a href="logout"><i class="icon-off"></i>Déconnexion</a></li>
 
                     </ul>            </nav>
