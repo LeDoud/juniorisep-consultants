@@ -1,4 +1,3 @@
-
 <div class="row-fluid">
     <div class="span20 offset1">
         <?php
@@ -67,5 +66,5 @@
             avatars: true,
             behavior: 'all'
         }
-    }).render().setUser('JournalDuGeek').start();
+    }).render().setUser('Developpez').start();
 </script>
