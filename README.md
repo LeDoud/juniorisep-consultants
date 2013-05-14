@@ -1,12 +1,13 @@
-## Application Web : Espace consultant v1.0 (2013) par Edouard VY
+## Application Web : Espace consultant v1.1 (2013) par Edouard VY
 
 
 Cette application a été réalisée grâce à la combinaison des frameworks CodeIgniter et Twitter Bootstrap.
 L'aspect graphique a été largement inspiré du site vitrine réalisé pendant ce même mandat par Richard S., afin de garder un certaine identité visuelle.
-Dans sa version 1.0, cet espace permet aux consultants de :
+Dans sa version 1.1, cet espace permet aux consultants de :
   - renseigner leur compétences
   - postuler aux missions
   - s'inscrire aux formations
+  - découvrir des offres de stage
 
 Il permet aux administrateurs de :
 
@@ -14,7 +15,9 @@ Il permet aux administrateurs de :
   - examiner les compétences de chaque consultant enregistré sur l'application
   - ajouter/modifier/supprimer des recherches de compétences
   - ajouter/modifier/supprimer des formations
+  - ajouter/modifier/supprimer des offres de stage
  
+N.B : Dans la version 1.1, le statut admin doit être directement fait via la BDD par sécurité.
 
 ## CodeIgniter - Introduction
 
