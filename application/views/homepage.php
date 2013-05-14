@@ -74,8 +74,4 @@
             behavior: 'all'
         }
     }).render().setUser('Developpez').start();
-<<<<<<< HEAD
 </script>
-=======
-</script>
->>>>>>> add stage module & updates
