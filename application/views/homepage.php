@@ -1,3 +1,4 @@
+
 <div class="row-fluid">
     <div class="span20 offset1">
         <?php
@@ -24,6 +25,8 @@
             echo'<div id="carre3" class="span6 offset1 well" ><h3 data-toggle="tooltip" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');" title="Inscris toi à la Junior pour pouvoir accéder aux formations !"><img src="' . base_url('assets/img/Clipboard.png') . '">Formations</h3></div>';
         }
     ?>
+    </div>
+    <div class="row-fluid">
         <div class="span14 offset1 well" id="twitter"></div>
     <?php
         if ($role != 'isepien') {
@@ -32,9 +35,6 @@
             echo'<div id="carre4" class="span6 well" ><h3 data-toggle="tooltip" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');" title="Inscris toi à la Junior pour pouvoir accéder aux offres de stage !"><img src="' . base_url('assets/img/Briefcase.png') . '">Stages</h3></div>';
         }
     ?>
-
-
-
 </div>
 <script src="https://widgets.twimg.com/j/2/widget.js"></script>
 <script>
