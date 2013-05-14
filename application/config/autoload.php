@@ -112,7 +112,7 @@ $autoload['language'] = array();
   |
  */
 
-$autoload['model'] = array('User_model', 'Competence_model', 'Formation_model', 'Recherche_model');
+$autoload['model'] = array('User_model', 'Competence_model', 'Formation_model', 'Recherche_model', 'Stage_model');
 
 
 /* End of file autoload.php */

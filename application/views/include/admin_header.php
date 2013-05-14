@@ -50,6 +50,7 @@
                             <li <?php echo ($menu == 'admin_consultants') ? 'class="active menu-"' : ''; ?>><a href="<?= site_url() ?>admin_consultants"><i class="icon-user icon-white"></i>Consultants</a></li>
                             <li <?php echo ($menu == 'admin_recherches') ? 'class="active menu-"' : ''; ?>><a href="<?= site_url() ?>admin_recherches"><i class="icon-shopping-cart"></i>Recherches de compétences</a></li>
                             <li <?php echo ($menu == 'admin_formations') ? 'class="active menu-"' : ''; ?>><a href="<?= site_url() ?>admin_formations"><i class="icon-briefcase"></i>Formations</a></li>
+                            <li <?php echo ($menu == 'admin_stages') ? 'class="active menu-"' : ''; ?>><a href="<?= site_url() ?>admin_stages"><i class="icon-gift"></i>Stages</a></li>
                             <li><a href="<?= site_url() ?>"><i class="icon-home"></i>Accueil</a></li>
                             <li><a href="logout"><i class="icon-off"></i>Déconnexion</a></li>
 

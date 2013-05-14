@@ -3,7 +3,7 @@
         <?php
         $userdata = $this->session->all_userdata();
         if (isset($userdata['annonce']) && $userdata['annonce'] == TRUE) {
-            echo '<div class="alert alert-info"><button type="button" class="close" data-dismiss="alert">&times;</button><p>Merci d\'avoir rempli ce formulaire, vous pouvez renseigner vos différentes compétences dès à présent dans l\'onglet <i class="icon-user icon-white"></i>.</p><p>Vous pouvez aussi regardez les différentes propositions de missions du moment dans <i class="icon-shopping-cart icon-white"></i>.</p><p>Si vous êtes consultant inscrit, vous pourrez bientôt avoir accès à la totalité de l\'espace consulant.</p><p>C’est à dire : <li>Postuler aux missions <i class="icon-shopping-cart icon-white"></i></li><li>S’inscrire aux formations <i class="icon-briefcase icon-white"></i></li></p></div>';
+            echo '<div class="alert alert-info"><button type="button" class="close" data-dismiss="alert">&times;</button><p>Merci d\'avoir rempli ce formulaire, vous pouvez renseigner vos différentes compétences dès à présent dans l\'onglet <i class="icon-user icon-white"></i>.</p><p>Vous pouvez aussi regardez les différentes propositions de missions du moment dans <i class="icon-shopping-cart icon-white"></i>.</p><p>Si vous êtes consultant inscrit, vous pourrez bientôt avoir accès à la totalité de l\'espace consulant.</p><p>C’est à dire : <li>Postuler aux missions <i class="icon-shopping-cart icon-white"></i></li><li>S’inscrire aux formations <i class="icon-briefcase icon-white"></i></li><li>Découvrir des offres de stage <i class="icon-gift icon-white"></i></li></p></div>';
             $this->session->set_userdata('annonce', FALSE);
         }
         ?>
@@ -24,12 +24,19 @@
             echo'<div id="carre3" class="span6 offset1 well" ><h3 data-toggle="tooltip" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');" title="Inscris toi à la Junior pour pouvoir accéder aux formations !"><img src="' . base_url('assets/img/Clipboard.png') . '">Formations</h3></div>';
         }
     ?>
-</div>
-<div class="row-fluid">
-    <div class="span20 offset1 well" id="twitter"></div>
-</div>
+        <div class="span14 offset1 well" id="twitter"></div>
+    <?php
+        if ($role != 'isepien') {
+            echo'<div id="carre4" class="span6 well"><h3><a href="' . site_url() . 'stage"><img src="' . base_url('assets/img/Briefcase.png') . '">Stages</a></h3></div>';
+        } else {
+            echo'<div id="carre4" class="span6 well" ><h3 data-toggle="tooltip" onmouseout="$(this).tooltip(\'hide\');" onmouseover="$(this).tooltip(\'show\');" title="Inscris toi à la Junior pour pouvoir accéder aux offres de stage !"><img src="' . base_url('assets/img/Briefcase.png') . '">Stages</h3></div>';
+        }
+    ?>
 
-<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+
+
+</div>
+<script src="https://widgets.twimg.com/j/2/widget.js"></script>
 <script>
     document.write = function() {
         var str = '';
@@ -67,4 +74,8 @@
             behavior: 'all'
         }
     }).render().setUser('Developpez').start();
+<<<<<<< HEAD
 </script>
+=======
+</script>
+>>>>>>> add stage module & updates
