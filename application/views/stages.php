@@ -3,7 +3,7 @@
     <div class="span18 offset2 well ">
 
         <h3><img alt="stages" src="<?php echo base_url('assets/img/Briefcase.png') ?>">
-            Offres de stages</h3>
+            Offres de stage</h3>
     </div>
 
 </div>
