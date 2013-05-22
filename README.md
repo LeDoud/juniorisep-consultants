@@ -17,7 +17,7 @@ Il permet aux administrateurs de :
   - ajouter/modifier/supprimer des formations
   - ajouter/modifier/supprimer des offres de stage
  
-N.B : Dans la version 1.1, le statut admin doit être directement fait via la BDD par sécurité.
+N.B : Dans la version 1.1, le statut admin doit être directement édité via la BDD par sécurité.
 
 ## CodeIgniter - Introduction
 
